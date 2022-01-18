@@ -1,0 +1,63 @@
+{
+  "name": "node-start",
+  "version": "0.9.0",
+  "description": "A simple easy to use start-up framework for node server applications and electron desktop apps. Lint, fix, optimize, concat, minify, compile and run your apps with little to no work.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sovr610/node-start.git"
+  },
+  "keywords": [
+    "node",
+    "start",
+    "startup",
+    "framework",
+    "lint",
+    "compile",
+    "run",
+    "electron",
+    "pack",
+    "concat",
+    "minify",
+    "parker"
+  ],
+  "author": "Parker Bidigare (work.simpleintelligence@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sovr610/node-start/issues"
+  },
+  "homepage": "https://github.com/sovr610/node-start#readme",
+  "devDependencies": {
+    "del": "^6.0.0",
+    "dotenv": "^14.2.0",
+    "electron": "^16.0.7",
+    "electron-builder": "^22.14.5",
+    "eslint": "^8.7.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "fancy-log": "^2.0.0",
+    "google-closure-compiler": "^20220104.0.0",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-cli": "^2.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-ejs": "^5.1.0",
+    "gulp-html": "^3.5.0",
+    "gulp-javascript-obfuscator": "^1.1.6",
+    "gulp-json-config": "^2.0.3",
+    "gulp-minify": "^3.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.7",
+    "nexe": "^4.0.0-beta.19",
+    "prettier": "^2.5.1"
+  }
+}
