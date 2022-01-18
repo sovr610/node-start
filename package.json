@@ -4,7 +4,8 @@
   "description": "A simple easy to use start-up framework for node server applications and electron desktop apps. Lint, fix, optimize, concat, minify, compile and run your apps with little to no work.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pretty": "prettier --write --tab-width 2 \"src/**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,17 @@
     "minify",
     "parker"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run pretty",
+      "git add"
+    ]
+  },
   "author": "Parker Bidigare (work.simpleintelligence@gmail.com)",
   "license": "ISC",
   "bugs": {
@@ -58,6 +70,7 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.1.7",
     "nexe": "^4.0.0-beta.19",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "typescript-eslint": "^0.0.1-alpha.0"
   }
 }
