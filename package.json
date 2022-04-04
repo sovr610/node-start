@@ -11,6 +11,20 @@
     "type": "git",
     "url": "git+https://github.com/sovr610/node-start.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "create-project": "node-bin/create-project",
+    "add-module": "node-bin/add-module",
+    "config-data": "node-bin/config-data",
+    "pad-ml": "node-bin/PAD-ML-CLI",
+    "scan-github": "node-bin/scan-github"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://www.patreon.com/PBcoder?fan_landing=true"
+  },
   "keywords": [
     "node",
     "start",
@@ -72,5 +86,9 @@
     "nexe": "^4.0.0-beta.19",
     "prettier": "^2.5.1",
     "typescript-eslint": "^0.0.1-alpha.0"
+  },
+  "dependencies": {
+    "arg": "^5.0.1",
+    "esm": "^3.2.25"
   }
 }
