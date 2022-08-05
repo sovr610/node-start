@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+# when building the exe of the server
+/publish
+

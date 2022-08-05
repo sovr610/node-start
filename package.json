@@ -4,8 +4,15 @@
   "description": "A simple easy to use start-up framework for node server applications and electron desktop apps. Lint, fix, optimize, concat, minify, compile and run your apps with little to no work.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "pretty": "prettier --write --tab-width 2 \"src/**/*.js\""
+    "test": "jest",
+    "lint": "npx eslint . --ext .ts --fix",
+    "build": "npx tsc",
+    "concat": "gulp concat",
+    "compile:googleClosure": "npx google-closure-compiler --js=./dist/combine/all.js --js_output_file=./dist/compile/out.js",
+    "compile:nexe": "nexe ./dist/compile/out.js -r ./dist/compile/public/*.* -o ./publish/server.exe -t x86-17.0.0 --build",
+    "run:dev": "npm run lint && npm run build && npm run concat && node ./dist/combine/all.js",
+    "run:compile": "npm run lint && npm run build && npm run concat && npm run compile:googleClosure && node ./dist/compile/out.js",
+    "publish": "npm run lint && npm run build && npm run concat && npm run compile:googleClosure && npm run compile:nexe"
   },
   "repository": {
     "type": "git",
@@ -14,13 +21,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "bin": {
-    "create-project": "node-bin/create-project",
-    "add-module": "node-bin/add-module",
-    "config-data": "node-bin/config-data",
-    "pad-ml": "node-bin/PAD-ML-CLI",
-    "scan-github": "node-bin/scan-github"
-  },
+  "bin": {},
   "funding": {
     "type": "individual",
     "url": "https://www.patreon.com/PBcoder?fan_landing=true"
@@ -33,12 +34,33 @@
     "lint",
     "compile",
     "run",
-    "electron",
     "pack",
     "concat",
     "minify",
-    "parker"
+    "parker",
+    "bidigare",
+    "optimize",
+    "publish",
+    "template"
   ],
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "**/test/*.+(ts|tsx|js)"
+    ]
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -46,7 +68,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "npm run pretty",
+      "npm run lint",
       "git add"
     ]
   },
@@ -57,18 +79,30 @@
   },
   "homepage": "https://github.com/sovr610/node-start#readme",
   "devDependencies": {
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/express": "^4.17.1",
+    "@types/jest": "^28.1.6",
+    "@types/supertest": "^2.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
     "del": "^6.0.0",
-    "dotenv": "^14.2.0",
+    "dotenv": "^14.3.2",
     "electron": "^16.0.7",
-    "electron-builder": "^22.14.5",
-    "eslint": "^8.7.0",
+    "eslint": "^8.21.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-ejs": "0.0.2",
     "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.7.0",
+    "eslint-plugin-jsdoc": "^39.3.4",
+    "eslint-plugin-markdown": "^3.0.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-pii": "^1.0.2",
     "eslint-plugin-standard": "^5.0.0",
+    "eslint-plugin-xss": "^0.1.12",
     "fancy-log": "^2.0.0",
     "google-closure-compiler": "^20220104.0.0",
     "gulp": "^4.0.2",
@@ -79,17 +113,23 @@
     "gulp-html": "^3.5.0",
     "gulp-javascript-obfuscator": "^1.1.6",
     "gulp-json-config": "^2.0.3",
-    "gulp-minify": "^3.1.0",
     "gulp-sourcemaps": "^3.0.0",
+    "hooky": "0.0.1",
     "husky": "^7.0.4",
-    "lint-staged": "^12.1.7",
-    "nexe": "^4.0.0-beta.19",
-    "prettier": "^2.5.1",
+    "jest": "^28.1.3",
+    "jsdoc": "^3.6.11",
+    "jsdoc-babel": "^0.5.0",
+    "lint-staged": "^12.5.0",
+    "nexe": "^4.0.0-rc.1",
+    "supertest": "^6.2.4",
+    "ts-jest": "^28.0.7",
+    "typescript": "^4.7.4",
     "typescript-eslint": "^0.0.1-alpha.0"
   },
   "dependencies": {
     "arg": "^5.0.1",
     "esm": "^3.2.25",
+    "express": "^4.17.1",
     "shelljs": "^0.8.5"
   }
 }
